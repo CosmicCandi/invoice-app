@@ -31,10 +31,10 @@ public class FlatFeeBillingRecordTests {
 	}
 	
 	@Test
-	public void test_createdOn_is_null_by_default() {
+	public void test_createdOn_is_not_null() {
 		Date actual = record.getCreatedOn();
 		
-		assertThat(actual).isNull();
+		assertThat(actual).isNotNull();
 	}
 	
 	@Test
@@ -107,4 +107,5 @@ public class FlatFeeBillingRecordTests {
 		
 		assertThat(actual).isEqualTo(amount);
 	}
+		
 }

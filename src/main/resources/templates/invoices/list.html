@@ -9,6 +9,26 @@
 <div>Hello, {{ user.username }}</div>
 
 <h1>Invoices</h1>
+<a href="/invoices/new">Create</a>
+
+{{ #showtable }}
+<table>
+<th>Created On</th>
+<th>Created By</th>
+<th>Invoice Number</th>
+<th>Company</th>
+
+
+{{ #invoices }}
+<tr>
+	<td> {{ createdOn }} </td>
+	<td> {{ user.username }} </td>
+	<td> {{ invoiceNumber }}</td>
+	<td> {{ company.name }} </td>
+</tr>
+{{ /invoices }}
+</table>
+{{ /showtable }}
 
 </body>
 </html>

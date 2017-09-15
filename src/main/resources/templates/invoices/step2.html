@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8">
+<title>Select line items</title>
+</head>
+<body>
+<h1>Invoice number:</h1>
+<form method="post" action="/invoices/create">
+<input type="text" name="invoiceNumber" placeholder="e.g. 534325" required>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Created on</th>
+      <th>Created by</th>
+      <th>Description</th>
+      <th>Client</th>
+      <th>Fee</th>
+      <th>Rate</th>
+      <th>Quantity</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#records}}
+      <tr>
+      	<td><input type="checkbox" value="{{ id }}" name="recordIds"></td>
+        <td>{{ createdOn }}</td>
+        <td>{{ createdBy.username }}</td>
+        <td>{{ description }}</td>
+        <td>{{ client.name }}</td>
+        <td>${{#amount}}{{ amount }}{{/amount}}</td>
+        <td>${{#rate}}{{ rate }}{{/rate}}</td>
+        <td>{{#quantity}}{{ quantity }}{{/quantity}}</td>
+        <td>${{ total }}</td>
+       </tr>
+    {{/records}}
+  </tbody>  
+</table>
+<input type="hidden" name="{{ _csrf.parameterName}}" value="{{ _csrf.token }}">
+<input type="hidden" name="clientId" value="{{ clientId }}">  
+<button>Create the invoice!</button>
+</form>
+</body>
+</html>

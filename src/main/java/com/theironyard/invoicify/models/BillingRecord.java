@@ -30,11 +30,13 @@ public abstract class BillingRecord {
 	@ManyToOne
 	private Company client;
 	
-	public BillingRecord() {}
-	
-	public BillingRecord(String description, User createdBy, Company client) {
+	public BillingRecord() {
 		long now = Calendar.getInstance().getTimeInMillis();
 		createdOn = new Date(now);
+	}
+	
+	public BillingRecord(String description, User createdBy, Company client) {
+		this();
 		this.createdBy = createdBy;
 		this.description = description;
 		this.client = client;
